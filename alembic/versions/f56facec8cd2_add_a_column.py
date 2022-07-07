@@ -16,9 +16,8 @@ branch_labels = None
 depends_on = None
 
 
-def upgrade() -> None:
-    pass
+def upgrade():
+    op.add_column('account', sa.Column('last_transaction_date', sa.DateTime))
 
-
-def downgrade() -> None:
-    pass
+def downgrade():
+    op.drop_column('account', 'last_transaction_date')
